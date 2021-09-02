@@ -1,5 +1,44 @@
 #include "../headers/function.h"
 //Punto 1
+void punto1(int sFlag){
+    int RAM_total, RAM_libre, RAM_disponible,SwapOcupada;
+
+    iYii(&RAM_total,&RAM_libre,&RAM_disponible,&SwapOcupada);//Metodo que devuelve mediante puntero los valores requeridos
+
+    char *Cpu=(char*)malloc(sizeof(char)*64);//No hay un criterio para alocar esta cantidad de memoria, el unico fin es que la info del cpu entre
+    int Cores,Thread;
+
+    iii(Cpu,&Cores,&Thread);//Metodo que devuelve mediante puntero los valores requeridos
+    if(!sFlag){
+        printf("i.\nla Ram disponible es: %dMb\nla Ram libre es: %dMb\nla Ram total es: %dMb\n\nii.\nLa Swap Ocupada es: %dKb\n",RAM_disponible,RAM_libre,RAM_total,SwapOcupada);
+        printf("\niii.\nCpu:%s \nCantidad de Cores: %d \nCantidad de Threads por Core: %d",Cpu,Cores,Thread);
+    }
+    else {
+        cJSON *ruta= cJSON_CreateObject();
+        cJSON *punto1;
+        cJSON *iYii;
+        cJSON *iii;
+        cJSON_AddItemToObject(ruta,"Punto 1",punto1 =cJSON_CreateObject() );
+
+        cJSON_AddItemToObject(punto1,"iYii",iYii=cJSON_CreateObject());
+
+        cJSON_AddNumberToObject(iYii,"RAM_disponible",RAM_disponible);
+        cJSON_AddNumberToObject(iYii,"RAM_libre",RAM_libre);
+        cJSON_AddNumberToObject(iYii,"RAM_total",RAM_total);
+        cJSON_AddNumberToObject(iYii,"SwapOcupada",SwapOcupada);
+        cJSON_AddNumberToObject(iYii,"RAM_disponible",RAM_disponible);
+
+        cJSON_AddItemToObject(punto1,"iii",iii=cJSON_CreateObject());
+
+        cJSON_AddStringToObject(iii,"Cpu" ,Cpu);
+        cJSON_AddNumberToObject(iii,"Cores",Cores);
+        cJSON_AddNumberToObject(iii,"Thread",Thread);
+
+        puts(cJSON_Print(ruta));
+    }
+    free(Cpu);
+
+}
 void deKbaMb(int *numero){
     *numero/=1024;
 }
@@ -33,7 +72,7 @@ void iYii(int *RAM_total,int *RAM_Libre,int *RAM_disponible, int *SwapOcupada){
             /*
              * Esta es una decision poco escalable ya que aprovechamos que de entrada
              *sabemos la distribucion de los datos en el texto.
-            */
+             */
             break;
         }
     };

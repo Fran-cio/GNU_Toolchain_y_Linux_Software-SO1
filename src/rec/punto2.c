@@ -1,5 +1,29 @@
 #include "../headers/function.h"
 //Pasa a mayusculas los valores en un string
+void punto2(int jFlag){
+    char **texto;
+    texto=(char**) malloc(sizeof(char*));
+    int cantpalabras=0;
+
+    getter(&texto,&cantpalabras);
+    if(!jFlag){
+        for(int i=0;i<cantpalabras ; i++){
+            puts(texto[i]);
+        }
+    }else {
+        cJSON *ruta= cJSON_CreateObject();
+        cJSON *punto2;
+        cJSON_AddItemToObject(ruta,"punto 2", punto2= cJSON_CreateObject());
+
+        for(int i=0;i<cantpalabras ; i++){
+            cJSON_AddArrayToObject(punto2,texto[i]);
+        }
+        puts(cJSON_Print(ruta));
+    }
+    free(texto);//libero memoria
+
+}
+
 void strupr ( char *texto )
 {
     while( *texto )
@@ -9,7 +33,7 @@ void strupr ( char *texto )
     }
 }
 
-void punto2(char ***texto,int *cantpalabras){
+void getter(char ***texto,int *cantpalabras){
     FILE *archivo;
     char *temp;
     archivo=fopen("/proc/version","r");
@@ -17,7 +41,7 @@ void punto2(char ***texto,int *cantpalabras){
     /*
      * guardo en una variable el tamaño del archivo al cual apunta, como el texto
      * posee solo texto, la idea es obtener almenos, la memoria minima necesaria
-    */
+     */
     int longitud= sizeof(*archivo);
     temp= (char*)malloc(sizeof (char )*longitud);
     fgets(temp,longitud,archivo);//con fgets guardo en un string la cadena de caracteres del archivo
@@ -26,7 +50,7 @@ void punto2(char ***texto,int *cantpalabras){
     /*
      * aprovechamos el arreglo dinamico y realocamos la memoria, y colocamos unicamente
      * el texto que contine.
-    */
+     */
     temp=realloc(temp, sizeof(char)*strlen(temp));
     strupr(temp);//Esto me sorprendio, tuve que implemetar el metodo strupr, hubiera jurado que estaba en la lib strings.h
 
