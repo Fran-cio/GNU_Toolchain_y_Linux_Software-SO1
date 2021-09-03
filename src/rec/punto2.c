@@ -13,10 +13,10 @@ void punto2(int jFlag){
     }else {
         cJSON *ruta= cJSON_CreateObject();
         cJSON *punto2;
-        cJSON_AddItemToObject(ruta,"punto 2", punto2= cJSON_CreateObject());
+        cJSON_AddItemToObject(ruta,"punto 2", punto2=cJSON_CreateArray()); 
 
         for(int i=0;i<cantpalabras ; i++){
-            cJSON_AddArrayToObject(punto2,texto[i]);
+            cJSON_AddItemToArray(punto2,cJSON_CreateString(texto[i]));
         }
         puts(cJSON_Print(ruta));
     }
