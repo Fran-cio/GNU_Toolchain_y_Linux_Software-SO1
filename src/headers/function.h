@@ -17,4 +17,5 @@ void iii(char *Cpu, int *Cores, int *Thread);
 void punto2(int jFlag);
 void strupr(char *texto);
 void getter(char ***texto, int *cantpalabras);
+ 
 #endif
