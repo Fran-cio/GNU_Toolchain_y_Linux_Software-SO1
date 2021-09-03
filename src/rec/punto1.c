@@ -37,7 +37,7 @@ void punto1(int sFlag){
         puts(cJSON_Print(ruta));
     }
     free(Cpu);
-
+    return;
 }
 void deKbaMb(int *numero){
     *numero/=1024;

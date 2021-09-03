@@ -21,7 +21,7 @@ void punto2(int jFlag){
         puts(cJSON_Print(ruta));
     }
     free(texto);//libero memoria
-
+    return;
 }
 
 void strupr ( char *texto )
