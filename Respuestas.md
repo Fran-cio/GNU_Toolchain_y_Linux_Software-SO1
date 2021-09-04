@@ -16,6 +16,6 @@ Salvo que en este caso en lugar de 1212 es el proceso numero 9704 como el indica
 #### 3. Qué diferencia hay entre hard y soft limits?
 * Los `soft-limits` son los límites que se asignan para el procesamiento real de la aplicación o los usuarios, mientras que los `hard-limits`, no son más que un límite superior a los valores de los soft-limits. En otras palabras, los soft-limits son limitan lo que me permito hacer, y los hard-limits es lo que puedo, notese la analogia con las capacidades individuales.
 
-> Referencia: [ulimit soft limits and hard limits in linux](https://www.geeksforgeeks.org/ulimit-soft- limits-and-hard-limits-in-linux/)
+> Referencia: [ulimit soft limits and hard limits in linux](https://www.geeksforgeeks.org/ulimit-soft-limits-and-hard-limits-in-linux/)
 
 
