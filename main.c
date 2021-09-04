@@ -60,7 +60,10 @@ int main(int argc,char** argv) {
      * Disclaimer: Por como esta implementado, si quiero ejecutar -a -s y solo quiero -a en formato JSON, no va
      * a ser posible. y voy a tener que ingresar 2 -j.
      */
-
+    if(!sFlag&&!aFlag&&jFlag>0){
+        puts("Inserte opcion compatible con formato JSON");
+        exit(EXIT_FAILURE);
+    }
     if (sFlag){
         puts("\nPunto 1:");
         punto1(jFlag);
