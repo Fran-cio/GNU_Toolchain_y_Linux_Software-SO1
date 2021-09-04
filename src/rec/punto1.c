@@ -14,6 +14,10 @@ void punto1(int sFlag){
         printf("\niii.\nCpu:%s \nCantidad de Cores: %d \nCantidad de Threads por Core: %d",Cpu,Cores,Thread);
     }
     else {
+        /* 
+         *Se crea un archivo Json al cual se le agregan los parametros obtenidos en los puntos i ii y iii, 
+         *cada uno de estos siendo un JSON en si mismo
+         */ 
         cJSON *ruta= cJSON_CreateObject();
         cJSON *punto1;
         cJSON *iYii;

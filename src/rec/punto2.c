@@ -11,6 +11,10 @@ void punto2(int jFlag){
             puts(texto[i]);
         }
     }else {
+        /*
+         * Se crea un archivo Json, al cual se le agrega un arreglo que se le agrega cada paralabra generada
+         * en el punto 2.
+         */
         cJSON *ruta= cJSON_CreateObject();
         cJSON *punto2;
         cJSON_AddItemToObject(ruta,"punto 2", punto2=cJSON_CreateArray()); 

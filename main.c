@@ -4,11 +4,17 @@
 #include <stdlib.h>
 
 int main(int argc,char** argv) {
+    /*
+     * Los flags indican cuales comandos se ingresaron
+     */
     int opt;
     int sFlag=0;
     int aFlag=0;
     int jFlag=0;
     int dFlag=0;
+    /*
+     * Un criterio de diseño fue que cuando no se ingresa parametro se salga de la ejecucion
+     */
     if (argc<2) {
         puts("Por favor, ingreso una de las opciones disponibles:\n\t-s\n\t-s -j\n\t-a\n\t-a -j\n\t-d");
         exit(EXIT_FAILURE);
@@ -47,6 +53,13 @@ int main(int argc,char** argv) {
                 break;
         }
     }
+    /*
+     * Otro criterio de diseño fue que cada comando no se ingrese mas de 1 vez, y ademas que los flags de cJSON
+     * se acumulen pudiendo pedir una opcion con formato JSON y otro sin, o los 2 con el formato.
+     * 
+     * Disclaimer: Por como esta implementado, si quiero ejecutar -a -s y solo quiero -a en formato JSON, no va
+     * a ser posible. y voy a tener que ingresar 2 -j.
+     */
 
     if (sFlag){
         puts("\nPunto 1:");
@@ -71,6 +84,10 @@ int main(int argc,char** argv) {
             exit(EXIT_FAILURE);
         }
         dlerror();
+        /* 
+         * El comando *(void **)(&filesystem) surgio como solucion a un error que lanzaba -pedantic pero
+         *desconozco el porque, es la solcion propuesta en stackoverflow
+         */
         *(void **)(&filesystem) = dlsym(handle,"filesystem");
         (*filesystem)();
         dlclose(handle);
