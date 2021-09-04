@@ -6,7 +6,7 @@ PATHout=./src/out/
 PATHlib=./src/lib/
 
 main: main.o libtp3.a libcjson.so 
-	$(CC) $(CFLAGS) -ggdb  -o main $(PATHout)main.o -L$(PATHlib) -ltp3 -ldl -Wl,-rpath,$(PATHlib)
+	$(CC) $(CFLAGS) -o main $(PATHout)main.o -L$(PATHlib) -ltp3 -ldl -Wl,-rpath,$(PATHlib)
 
 main.o: main.c $(PATHh)function.h
 	$(CC) $(CFLAGS) -c main.c
