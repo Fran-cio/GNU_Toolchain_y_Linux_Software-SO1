@@ -16,10 +16,10 @@ int main(int argc,char** argv) {
      * Un criterio de diseño fue que cuando no se ingresa parametro se salga de la ejecucion
      */
     if (argc<2) {
-        puts("Por favor, ingreso una de las opciones disponibles:\n\t-s\n\t-s -j\n\t-a\n\t-a -j\n\t-d");
+        puts("Comando desconocido, ingrese -h para ver los comandos disponibles");
         exit(EXIT_FAILURE);
     } 
-    while((opt = getopt(argc, argv, "sajd")) != -1){
+    while((opt = getopt(argc, argv, "sajdh")) != -1){
         switch(opt){
             case 's':
                 if(sFlag==1){
@@ -33,7 +33,6 @@ int main(int argc,char** argv) {
                     puts("inserte una sola vez el comando");
                     exit(EXIT_FAILURE);
                 }
-
                 aFlag=1;
                 break;
             case 'j':
@@ -44,11 +43,13 @@ int main(int argc,char** argv) {
                     puts("inserte una sola vez el comando");
                     exit(EXIT_FAILURE);
                 }
-
                 dFlag=1;
                 break;
+            case 'h':
+                puts("Las opciones disponibles son:\n\t-s: Datos del punto1\n\t-s -j: Datos de punto1 en formato JSON\n\t-a: Datos de punto2\n\t-a -j: Datos de punto2 en formato JSON\n\t-d: Contenido del archivo filesystem en formato JSON");
+                exit(EXIT_FAILURE);
             default: 
-                puts("Opcion no valida, las opciones disponibles son:\n\t-s\n\t-s -j\n\t-a\n\t-a -j\n\t-d");
+                puts("Comando desconocido, ingrese -h para ver los comandos disponibles");
                 exit(EXIT_FAILURE);
                 break;
         }
