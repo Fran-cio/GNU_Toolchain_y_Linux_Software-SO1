@@ -1,7 +1,7 @@
 #include <dlfcn.h>
 #include <stdio.h>
 #include <unistd.h>
-#include "../headers/cJSON.h"
+#include "../include/cJSON.h"
 #include <stdlib.h>
 
 void filesystem(){

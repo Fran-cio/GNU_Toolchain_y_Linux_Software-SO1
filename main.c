@@ -1,4 +1,4 @@
-#include "./src/headers/function.h"
+#include "./include/function.h"
 #include <dlfcn.h>
 #include <stdio.h>
 #include <stdlib.h>

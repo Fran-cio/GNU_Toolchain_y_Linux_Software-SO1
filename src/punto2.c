@@ -1,4 +1,4 @@
-#include "../headers/function.h"
+#include "../include/function.h"
 //Pasa a mayusculas los valores en un string
 void punto2(int jFlag){
     char **texto;

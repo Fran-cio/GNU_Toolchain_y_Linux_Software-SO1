@@ -1,4 +1,4 @@
-#include "../headers/function.h"
+#include "../include/function.h"
 //Punto 1
 void punto1(int sFlag){
     int RAM_total, RAM_libre, RAM_disponible,SwapOcupada;

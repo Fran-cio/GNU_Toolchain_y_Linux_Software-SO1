@@ -7,7 +7,7 @@
 #include <ctype.h>
 #include <stdint.h>
 #include <unistd.h>
-#include "../headers/cJSON.h"
+#include "../include/cJSON.h"
 //Punto1
 void punto1(int jFlag); 
 void deKbaMb(int *numero);

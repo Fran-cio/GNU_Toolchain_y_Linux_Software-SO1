@@ -1,14 +1,17 @@
 CC=gcc
 CFLAGS=-Wall -Werror -pedantic 
-PATHh=./src/headers/
-PATHrec=./src/rec/
-PATHout=./src/out/
-PATHlib=./src/lib/
+PATHh=./include/
+PATHrec=./src/
+PATHout=./out/
+PATHlib=./lib/
+PATHbin=./bin/
 
 main: main.o libtp3.a libcjson.so 
-	$(CC) $(CFLAGS) -o main $(PATHout)main.o -L$(PATHlib) -ltp3 -ldl -Wl,-rpath,$(PATHlib)
+	mkdir -p $(PATHbin)
+	$(CC) $(CFLAGS) -o $(PATHbin)main $(PATHout)main.o -L$(PATHlib) -ltp3 -ldl -Wl,-rpath,$(PATHlib)
 
 main.o: main.c $(PATHh)function.h
+	mkdir -p $(PATHout)
 	$(CC) $(CFLAGS) -c main.c
 	mv ./main.o $(PATHout)
 
@@ -28,7 +31,8 @@ filesystem.o: $(PATHrec)filesystem.c
 	$(CC) $(CFLAGS) -c $(PATHrec)filesystem.c
 	mv ./filesystem.o $(PATHout)
 
-libtp3.a: punto1.o punto2.o cJSON.o 
+libtp3.a: punto1.o punto2.o cJSON.o
+	mkdir -p $(PATHlib) 
 	ar cr $(PATHlib)libtp3.a $(PATHout)punto1.o $(PATHout)punto2.o $(PATHout)cJSON.o 
 
 libcjson.so: filesystem.o cJSON.o
@@ -36,7 +40,7 @@ libcjson.so: filesystem.o cJSON.o
 	mv ./libcjson.so $(PATHlib)
 
 clean:
-	rm -f $(PATHlib)*.so $(PATHlib)*.a $(PATHout)*.o main
+	rm -f -d $(PATHlib)* $(PATHlib) $(PATHout)* $(PATHout) $(PATHbin)* $(PATHbin) 
 
 
 
